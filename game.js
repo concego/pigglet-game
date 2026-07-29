@@ -25,6 +25,7 @@ function next() {
     cur = 0; 
     d.cur.textContent = '0'; 
     ui(); 
+    setTimeout(clearStatus, 1500); // Limpa o status da jogada anterior após um breve intervalo
     if (p === 1 && active) {
         isCPUTurn = true;
         setTimeout(cpuPlay, 1000);
@@ -86,4 +87,5 @@ d.lang.onclick = () => { lang = lang==='pt'?'en':'pt'; ui(); };
 d.roll.onclick = () => { if (!isCPUTurn) rollDice(); };
 d.hold.onclick = () => { if (!isCPUTurn) holdPoints(); };
 d.new.onclick = () => { scores=[0,0]; cur=0; p=0; active=true; isCPUTurn=false; d.p1.textContent='0'; d.p2.textContent='0'; d.cur.textContent='0'; d.st.textContent=''; ui(); };
+function clearStatus() { d.st.textContent = ''; }
 ui();
